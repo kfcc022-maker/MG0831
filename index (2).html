@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MG 상생 희망드림 대출 - 상품 기획 및 데이터 인포그래픽</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            background-color: #0b1120;
+            color: #f1f5f9;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(56, 189, 248, 0.15);
+        }
+        .gradient-dramatic {
+            background: radial-gradient(circle at 10% 20%, rgba(2, 132, 199, 0.4) 0%, transparent 50%),
+                        radial-gradient(circle at 90% 80%, rgba(13, 148, 136, 0.3) 0%, transparent 50%),
+                        linear-gradient(135deg, #0f172a 0%, #030712 100%);
+        }
+        .glow-sky {
+            box-shadow: 0 0 25px -5px rgba(56, 189, 248, 0.3);
+        }
+        .glow-amber {
+            box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.3);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-sky-500 selection:text-white gradient-dramatic min-h-screen">
+
+    <!-- Top Sticky Navigation -->
+    <nav class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-600 to-teal-400 text-white font-black text-lg shadow-lg shadow-sky-500/40">MG</span>
+                    <div>
+                        <span class="font-bold text-lg tracking-tight text-slate-100">새마을금고중앙회</span>
+                        <span class="text-xs text-sky-400 block -mt-1 font-semibold">금융상품개발팀 | 긴급 상생 프로젝트</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-300">
+                    <a href="#overview" class="hover:text-sky-400 transition-colors">기획 배경</a>
+                    <a href="#target" class="hover:text-amber-400 text-amber-300 font-bold transition-colors">타깃 고객</a>
+                    <a href="#specs" class="hover:text-sky-400 transition-colors">상품 스펙</a>
+                    <a href="#risk" class="hover:text-sky-400 transition-colors">리스크 관리</a>
+                    <a href="#impact" class="hover:text-sky-400 transition-colors">기대 효과</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dramatic Hero Header Banner -->
+    <header id="overview" class="relative pt-14 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="inline-flex items-center gap-2 bg-gradient-to-r from-sky-500/20 to-teal-500/20 backdrop-blur-md px-4 py-1.5 rounded-full text-sky-300 text-xs font-bold mb-6 border border-sky-400/40">
+                <span class="animate-pulse">🔥</span> 벼랑 끝 골목상권을 살리는 포용적 상생금융 긴급 프로젝트
+            </div>
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white mb-6 leading-tight">
+                새벽을 여는 당신을 위해,<br class="hidden sm:inline">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-teal-300 to-amber-300">MG 상생 희망
+                    드림 대출</span>
+                <span class="text-amber-400 text-2xl sm:text-3xl font-bold ml-2">(가칭)</span>
+            </h1>
+            <p class="text-slate-300 text-base sm:text-xl max-w-3xl leading-relaxed font-normal">
+                "가게 문을 닫지 않게, 불이 꺼지지 않게" — 고금리 한파와 경기 침체의 사투 속에서 땀 흘리는 전통시장 상인과 골목상권 소상공인을 지키는 새마을금고의 든든한 금융 방파제입니다.
+            </p>
+        </div>
+    </header>
+
+    <!-- Key Metrics Highlight Bar (Floating Dramatic Cards) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 relative z-20">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+            <div class="glass-panel rounded-2xl p-5 shadow-2xl border-t-4 border-sky-400 hover:transform hover:-translate-y-1 transition-all glow-sky">
+                <div class="text-xs font-bold text-sky-300 tracking-wider">최대 긴급 수혈 한도</div>
+                <div class="text-2xl sm:text-3xl font-black text-white mt-1">5,000<span class="text-sm font-bold text-sky-400 ml-1">만 원</span></div>
+                <p class="text-xs text-slate-400 mt-1">현장 매출 기반 맞춤 심사</p>
+            </div>
+            <div class="glass-panel rounded-2xl p-5 shadow-2xl border-t-4 border-amber-400 hover:transform hover:-translate-y-1 transition-all glow-amber">
+                <div class="text-xs font-bold text-amber-300 tracking-wider">파격 우대 금리</div>
+                <div class="text-2xl sm:text-3xl font-black text-amber-400 mt-1">최대 1.5<span class="text-sm font-bold ml-1">%p 감면</span></div>
+                <p class="text-xs text-slate-400 mt-1">이자 부담 실질적 경감</p>
+            </div>
+            <div class="glass-panel rounded-2xl p-5 shadow-2xl border-t-4 border-teal-400 hover:transform hover:-translate-y-1 transition-all">
+                <div class="text-xs font-bold text-teal-300 tracking-wider">재도약 거치 기간</div>
+                <div class="text-2xl sm:text-3xl font-black text-teal-400 mt-1">최장 5<span class="text-sm font-bold ml-1">년</span></div>
+                <p class="text-xs text-slate-400 mt-1">1년 거치 4년 분할 상환</p>
+            </div>
+            <div class="glass-panel rounded-2xl p-5 shadow-2xl border-t-4 border-indigo-400 hover:transform hover:-translate-y-1 transition-all">
+                <div class="text-xs font-bold text-indigo-300 tracking-wider">보증재단 연계 담보</div>
+                <div class="text-2xl sm:text-3xl font-black text-indigo-400 mt-1">90~100<span class="text-sm font-bold ml-1">%</span></div>
+                <p class="text-xs text-slate-400 mt-1">안전한 공적 보증 안전망</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+
+        <!-- SECTION 1: 기획 배경 및 추진 필요성 -->
+        <section class="glass-panel rounded-2xl shadow-xl p-6 sm:p-8 border border-slate-800">
+            <div class="max-w-3xl mb-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-bold uppercase tracking-wider mb-2">
+                    Section 01
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">위기의 골목상권, 왜 지금 상생금융인가</h2>
+                <p class="text-slate-300 mt-3 leading-relaxed text-sm sm:text-base">
+                    고물가·고금리의 이중고 속에서 서민경제의 뿌리인 골목상권이 붕괴 직전에 직면해 있습니다. 원자재값 폭등과 금융비용 급증이라는 거대한 파도 앞에 소상공인들은 존폐의 갈림길에 서 있습니다. 풀뿌리 상호금융의 심장인 새마을금고가 가장 먼저 손을 내밀어야 할 순간입니다.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-slate-900/80 rounded-xl p-6 border border-rose-500/30 shadow-lg relative overflow-hidden">
+                    <div class="absolute right-3 top-3 text-5xl opacity-10">🚨</div>
+                    <div class="w-10 h-10 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold text-xl mb-4">
+                        📉
+                    </div>
+                    <h3 class="text-lg font-bold text-rose-300 mb-2">실물경기 한파와 한계 자영업자 급증</h3>
+                    <ul class="text-xs sm:text-sm text-slate-300 space-y-2 leading-relaxed">
+                        <li class="flex items-start gap-2">
+                            <span class="text-rose-400 font-bold">•</span>
+                            <span>전통시장 및 지역 상점가 고객 급감으로 영업이익 급락 및 폐업 위기 심화</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-rose-400 font-bold">•</span>
+                            <span>제2금융권·고금리 대출로 내몰리는 소상공인 금융 악순환 가속화</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-slate-900/80 rounded-xl p-6 border border-teal-500/30 shadow-lg relative overflow-hidden">
+                    <div class="absolute right-3 top-3 text-5xl opacity-10">🤝</div>
+                    <div class="w-10 h-10 rounded-lg bg-teal-500/20 text-teal-400 flex items-center justify-center font-bold text-xl mb-4">
+                        🛡️
+                    </div>
+                    <h3 class="text-lg font-bold text-teal-300 mb-2">새마을금고의 존재 이유: '상생'의 책무</h3>
+                    <ul class="text-xs sm:text-sm text-slate-300 space-y-2 leading-relaxed">
+                        <li class="flex items-start gap-2">
+                            <span class="text-teal-400 font-bold">•</span>
+                            <span>수익성 중심 시중은행이 외면하는 영세 상인을 보듬는 따뜻한 서민금융 방파제</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-teal-400 font-bold">•</span>
+                            <span>지역화폐와 연계하여 자금이 지역 안에서 선순환하는 상생 생태계 재구축</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: 타깃 고객층 및 지원 자격 (DRAMATICALLY ENHANCED) -->
+        <section id="target" class="glass-panel rounded-2xl shadow-2xl p-6 sm:p-8 border-2 border-amber-500/40 relative overflow-hidden">
+            <!-- Background Glow FX -->
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-3xl mb-8 relative z-10">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 border border-amber-400/50 text-amber-300 text-xs font-black uppercase tracking-wider mb-3">
+                    <span>✨</span> SECTION 02 | RECOVERY TARGET
+                </div>
+                <h2 class="text-2xl sm:text-4xl font-black text-white tracking-tight leading-snug">
+                    새벽을 여는 골목의 버팀목을 품다<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-teal-300 to-sky-300">정밀 타깃 및 긴급 자격 요건</span>
+                </h2>
+                <p class="text-slate-300 mt-4 leading-relaxed text-sm sm:text-base font-normal">
+                    본 상품은 책상 위 서류가 아닌, <strong class="text-amber-300 font-bold">매일 새벽 불을 켜고 현장을 지키는 100만 풀뿌리 자영업자</strong>를 향합니다. 지역화폐로 골목을 살리는 가맹점주와 묵묵히 자리를 지켜온 전통시장 상인에게 새마을금고의 가장 따뜻하고 강력한 금융 활로를 집중 지원합니다.
+                </p>
+            </div>
+
+            <!-- Dramatic Quote Banner -->
+            <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-amber-950/40 via-slate-900 to-sky-950/40 border border-amber-500/30 mb-8 flex items-center gap-4">
+                <div class="text-3xl sm:text-4xl shrink-0">🕯️</div>
+                <div class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                    <span class="font-bold text-amber-300">"단 하루도 쉴 수 없었던 당신의 땀방울이 곧 최고의 담보입니다."</span><br>
+                    어려운 환경에서도 6개월 이상 성실히 사업장을 지켜낸 진성 소상공인을 엄선하여 신속히 자금을 수혈합니다.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative z-10">
+                <!-- Left Chart -->
+                <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-800">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-sm sm:text-base font-extrabold text-white">지원 대상 소상공인 핵심 비중 구성</h3>
+                        <span class="text-xs font-bold text-teal-400 bg-teal-500/10 px-2 py-0.5 rounded border border-teal-500/20">풀뿌리 집중 75%</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="targetAudienceChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center mt-3">
+                        * 지역화폐 가맹점(45%) 및 전통시장 상인(30%) 중심의 <strong>초밀착 지원 구조</strong>
+                    </p>
+                </div>
+
+                <!-- Right Dramatic Qualification Steps -->
+                <div class="space-y-4">
+                    <!-- Qualification Card 1 -->
+                    <div class="p-5 rounded-xl bg-slate-900/90 border-l-4 border-sky-400 border-r border-t border-b border-slate-800 shadow-lg hover:border-sky-300 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-black text-sky-400 uppercase tracking-wide flex items-center gap-1.5">
+                                <span>📌</span> 기본 자격 요건
+                            </span>
+                            <span class="text-[11px] font-bold text-slate-400 bg-slate-800 px-2 py-0.5 rounded">영속성 검증</span>
+                        </div>
+                        <h4 class="font-black text-white text-base mt-2">사업자등록 6개월 이상 정상 영업</h4>
+                        <p class="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
+                            현장에서 실질적으로 땀 흘리며 사업장을 운영 중인 <strong class="text-sky-300 font-semibold">개인사업자</strong>라면 누구나 첫 문턱을 넘을 수 있습니다.
+                        </p>
+                    </div>
+
+                    <!-- Qualification Card 2 -->
+                    <div class="p-5 rounded-xl bg-slate-900/90 border-l-4 border-amber-400 border-r border-t border-b border-slate-800 shadow-lg hover:border-amber-300 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-black text-amber-400 uppercase tracking-wide flex items-center gap-1.5">
+                                <span>⭐</span> 핵심 우대 타깃 (택 1 이상 필수 충족)
+                            </span>
+                            <span class="text-[11px] font-bold text-amber-300 bg-amber-500/20 px-2 py-0.5 rounded border border-amber-400/30">우선 선발</span>
+                        </div>
+                        <div class="mt-2 space-y-2">
+                            <div class="flex items-start gap-2 text-xs sm:text-sm text-slate-200 bg-slate-950/60 p-2.5 rounded-lg border border-slate-800">
+                                <span class="text-amber-400 font-black">✔</span>
+                                <div>
+                                    <strong class="text-white block font-bold">지자체 지역화폐(지역사랑상품권) 공식 가맹점주</strong>
+                                    <span class="text-slate-400 text-xs">지역 소비를 선순환시키는 풀뿌리 경제의 핵심 주역</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs sm:text-sm text-slate-200 bg-slate-950/60 p-2.5 rounded-lg border border-slate-800">
+                                <span class="text-teal-400 font-black">✔</span>
+                                <div>
+                                    <strong class="text-white block font-bold">전통시장 및 상점가 육성 특별법 상 등록 상인</strong>
+                                    <span class="text-slate-400 text-xs">지역의 오랜 역사와 온기를 이어온 시장 상인회 소속 상인</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Qualification Card 3 -->
+                    <div class="p-5 rounded-xl bg-slate-900/90 border-l-4 border-teal-400 border-r border-t border-b border-slate-800 shadow-lg hover:border-teal-300 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-black text-teal-400 uppercase tracking-wide flex items-center gap-1.5">
+                                <span>📊</span> 신용 평가 및 포용 심사
+                            </span>
+                            <span class="text-[11px] font-bold text-slate-400 bg-slate-800 px-2 py-0.5 rounded">따뜻한 금융</span>
+                        </div>
+                        <h4 class="font-black text-white text-base mt-2">새마을금고 자체 CSS 포용 심사 적용</h4>
+                        <p class="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
+                            단순 수치형 신용점수에 얽매이지 않고, <strong class="text-teal-300 font-semibold">매출 지속성과 상환 의지</strong>를 종합 고려하는 유연하고 포용적인 CSS 심사 체계를 가동합니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: 상품 주요 스펙 및 금리우대 구조 -->
+        <section id="specs" class="glass-panel rounded-2xl shadow-xl p-6 sm:p-8 border border-slate-800">
+            <div class="max-w-3xl mb-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-bold uppercase tracking-wider mb-2">
+                    Section 03
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">이자 부담을 덜어주는 파격 금리 우대 구조</h2>
+                <p class="text-slate-300 mt-3 leading-relaxed text-sm sm:text-base">
+                    소상공인의 실제 체감 이자를 극적으로 낮추기 위해 최대 1.5%p의 우대금리 항목을 3단계로 직관화하였습니다. 모바일 비대면 채널(MG더뱅킹)과 서류 스크래핑 자동화를 결합하여 편리함을 더했습니다.
+                </p>
+            </div>
+
+            <!-- Rate Structure Chart & Details -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+                <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-800">
+                    <h3 class="text-base font-bold text-white mb-2 text-center">우대금리 항목별 할인 폭 (최대 연 1.5%p)</h3>
+                    <div class="chart-container">
+                        <canvas id="rateStructureChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center mt-3">
+                        * 3가지 상생 조건 충족 시 기본금리 대비 연 1.5%p 직하향 혜택
+                    </p>
+                </div>
+
+                <!-- MG The Banking Digital Perks -->
+                <div class="bg-gradient-to-br from-slate-900 via-slate-900 to-sky-950 text-white rounded-2xl p-6 flex flex-col justify-between shadow-2xl border border-sky-500/30">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/20 text-sky-300 text-xs font-bold mb-4 border border-sky-400/40">
+                            📱 MG더뱅킹 비대면 원스톱 패키지
+                        </div>
+                        <h3 class="text-xl font-black text-white mb-4">영업점 방문 없이 스마트폰 하나로</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-sky-500/20 border border-sky-400/40 flex items-center justify-center text-sky-400 font-bold shrink-0">1</div>
+                                <div>
+                                    <h4 class="font-bold text-slate-100 text-sm">무방문 공공 마이데이터 서류 자동 스크래핑</h4>
+                                    <p class="text-xs text-slate-300 mt-0.5">사업자등록증, 소득금액증명원 등 번거로운 서류를 터치 한 번으로 제출</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-teal-500/20 border border-teal-400/40 flex items-center justify-center text-teal-400 font-bold shrink-0">2</div>
+                                <div>
+                                    <h4 class="font-bold text-slate-100 text-sm">중도상환수수료 및 약정 수수료 완전 면제</h4>
+                                    <p class="text-xs text-slate-300 mt-0.5">언제든 여유 자금이 생기면 페널티 없이 자유롭게 원금 상환 가능</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-400 font-bold shrink-0">3</div>
+                                <div>
+                                    <h4 class="font-bold text-slate-100 text-sm">소상공인 점포 매출 분석 리포트 무상 제공</h4>
+                                    <p class="text-xs text-slate-300 mt-0.5">상권 동향, 요일별 매출 패턴, 고객 유입 데이터를 모바일로 실시간 진단</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INTERACTIVE CALCULATOR SIMULATOR -->
+            <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 sm:p-8">
+                <div class="mb-6">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        <span>🧮</span> 실시간 이자 절감 & 상환액 시뮬레이터
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-400 mt-1">
+                        신청 금액과 우대 조건을 선택하여 내 가게의 연간 금융비용 절감 효과를 직접 확인하세요.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                    <!-- Controls -->
+                    <div class="space-y-5 lg:col-span-2">
+                        <div>
+                            <div class="flex justify-between text-sm font-bold text-slate-200 mb-2">
+                                <label for="loanAmountRange">희망 대출 신청 금액</label>
+                                <span id="loanAmountText" class="text-sky-400 font-black text-lg">3,000만 원</span>
+                            </div>
+                            <input type="range" id="loanAmountRange" min="1000" max="5000" step="500" value="3000"
+                                class="w-full h-2.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-sky-500">
+                            <div class="flex justify-between text-xs text-slate-500 mt-1">
+                                <span>1,000만 원</span>
+                                <span>3,000만 원</span>
+                                <span>5,000만 원</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <span class="text-xs font-bold text-slate-300 uppercase tracking-wider block">우대 금리 항목 선택</span>
+                            
+                            <label class="flex items-center gap-3 p-3 bg-slate-950/80 rounded-xl border border-slate-800 cursor-pointer hover:border-sky-500/50 transition-colors">
+                                <input type="checkbox" id="checkOption1" checked class="w-4 h-4 text-sky-500 rounded border-slate-700 focus:ring-sky-500 bg-slate-900">
+                                <div class="text-xs sm:text-sm">
+                                    <span class="font-bold text-slate-200 block">지역화폐 결제계좌 새마을금고 지정</span>
+                                    <span class="text-slate-400">우대금리 <strong class="text-sky-400">+0.5%p</strong> 할인</span>
+                                </div>
+                            </label>
+
+                            <label class="flex items-center gap-3 p-3 bg-slate-950/80 rounded-xl border border-slate-800 cursor-pointer hover:border-teal-500/50 transition-colors">
+                                <input type="checkbox" id="checkOption2" checked class="w-4 h-4 text-teal-500 rounded border-slate-700 focus:ring-teal-500 bg-slate-900">
+                                <div class="text-xs sm:text-sm">
+                                    <span class="font-bold text-slate-200 block">MG더뱅킹 가입 및 자동이체 연결</span>
+                                    <span class="text-slate-400">우대금리 <strong class="text-teal-400">+0.5%p</strong> 할인</span>
+                                </div>
+                            </label>
+
+                            <label class="flex items-center gap-3 p-3 bg-slate-950/80 rounded-xl border border-slate-800 cursor-pointer hover:border-amber-500/50 transition-colors">
+                                <input type="checkbox" id="checkOption3" checked class="w-4 h-4 text-amber-500 rounded border-slate-700 focus:ring-amber-500 bg-slate-900">
+                                <div class="text-xs sm:text-sm">
+                                    <span class="font-bold text-slate-200 block">전통시장 상인회 추천서 또는 지자체 협약</span>
+                                    <span class="text-slate-400">우대금리 <strong class="text-amber-400">+0.5%p</strong> 할인</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Simulator Result Box -->
+                    <div class="bg-gradient-to-br from-sky-600 via-teal-700 to-slate-900 text-white p-6 rounded-2xl shadow-2xl flex flex-col justify-between text-center min-h-[280px] border border-sky-400/30 glow-sky">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-sky-200">예상 시뮬레이션 결과</span>
+                            <div class="mt-4">
+                                <div class="text-xs text-sky-200">총 적용 우대금리</div>
+                                <div id="calcDiscountRate" class="text-3xl font-black text-amber-300 mt-0.5">1.5 %p</div>
+                            </div>
+
+                            <div class="mt-6 pt-4 border-t border-white/20">
+                                <div class="text-xs text-sky-200">연간 아끼는 이자 금액</div>
+                                <div id="calcSavedInterest" class="text-2xl sm:text-3xl font-black text-white mt-0.5">45만 원</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-white/20">
+                            <span class="text-xs text-sky-200 block">5년 분할 상환 기준 (가상 기준금리 4.5%)</span>
+                            <span id="calcMonthlyPayment" class="text-base font-bold text-teal-200 mt-1 block">월 약 53.6만 원</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: 리스크 관리 방안 -->
+        <section id="risk" class="glass-panel rounded-2xl shadow-xl p-6 sm:p-8 border border-slate-800">
+            <div class="max-w-3xl mb-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-bold uppercase tracking-wider mb-2">
+                    Section 04
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">철저한 리스크 차단 및 조기경보(EWS) 시스템</h2>
+                <p class="text-slate-300 mt-3 leading-relaxed text-sm sm:text-base">
+                    지역신용보증재단 연계로 금고의 부실 리스크를 원천 차단하고, 실시간 매출 입금 흐름을 추적하는 조기경보(EWS)를 통해 부실이 발생하기 전 선제적으로 컨설팅을 제공합니다.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-8">
+                <!-- Doughnut Chart for Risk Coverage -->
+                <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-800">
+                    <h3 class="text-base font-bold text-white mb-2 text-center">지역신용보증재단 연계 담보 비율</h3>
+                    <div class="chart-container">
+                        <canvas id="riskGuaranteeChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center mt-3">
+                        * 90~100% 보증 담보로 대손충당금 적립 부담 및 원금 손실 최소화
+                    </p>
+                </div>
+
+                <!-- Structural Steps -->
+                <div class="space-y-4">
+                    <h3 class="text-base font-bold text-white mb-2">3단계 조기경보(EWS) 선순환 체계</h3>
+                    
+                    <div class="relative pl-6 pb-4 border-l-2 border-sky-500/40 space-y-6">
+                        <!-- Step 1 -->
+                        <div class="relative">
+                            <div class="absolute -left-[31px] top-0 w-6 h-6 rounded-full bg-sky-500 text-white flex items-center justify-center text-xs font-bold">1</div>
+                            <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                                <h4 class="font-bold text-sky-300 text-sm">매출 입금 동향 실시간 모니터링</h4>
+                                <p class="text-xs text-slate-300 mt-1">지역화폐 결제계좌 및 주거래 통장의 입금 흐름을 주기적으로 자동 분석</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="relative">
+                            <div class="absolute -left-[31px] top-0 w-6 h-6 rounded-full bg-teal-500 text-white flex items-center justify-center text-xs font-bold">2</div>
+                            <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                                <h4 class="font-bold text-teal-300 text-sm">이상 징후 조기 감지 (EWS Trigger)</h4>
+                                <p class="text-xs text-slate-300 mt-1">전월 대비 매출 30% 이상 급감 시 전담 담당자에게 알림 자동 발송</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="relative">
+                            <div class="absolute -left-[31px] top-0 w-6 h-6 rounded-full bg-amber-500 text-white flex items-center justify-center text-xs font-bold">3</div>
+                            <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                                <h4 class="font-bold text-amber-300 text-sm">선제적 경영 컨설팅 및 만기 재약정</h4>
+                                <p class="text-xs text-slate-300 mt-1">연체 발생 전 찾아가는 맞춤형 금융 상담 및 상환 유예 선제 지원</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: 기대 효과 및 ESG 비전 -->
+        <section id="impact" class="glass-panel rounded-2xl shadow-xl p-6 sm:p-8 border border-slate-800">
+            <div class="max-w-3xl mb-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-2">
+                    Section 05
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">상생이 만드는 3개년 성장 시너지</h2>
+                <p class="text-slate-300 mt-3 leading-relaxed text-sm sm:text-base">
+                    단순한 대출 공급을 넘어, 금고에는 안정적인 저원가성 수신과 우량 자산을 안겨주고 소상공인에게는 회생의 발판을 제공하여 ESG 상생금융의 선순환 롤모델을 확립합니다.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <!-- Dual Axis Projection Chart -->
+                <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-800">
+                    <h3 class="text-base font-bold text-white mb-2 text-center">3개년 수신 유치 및 소상공인 이자 절감 추이</h3>
+                    <div class="chart-container">
+                        <canvas id="impactProjectionChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center mt-3">
+                        * 수신 규모 확대와 비례하여 지역사회 금융비용 환원 가치 극대화
+                    </p>
+                </div>
+
+                <!-- Expected Benefits Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="p-5 rounded-2xl bg-slate-900/90 border border-sky-500/30 shadow-md">
+                        <span class="text-2xl">🏦</span>
+                        <h4 class="font-bold text-white text-base mt-2">저원가성 수신 대폭 유치</h4>
+                        <p class="text-xs text-slate-300 mt-1 leading-relaxed">
+                            지역화폐 결제계좌 및 매장 정산계좌 유치로 조달비용 획기적 절감
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-900/90 border border-teal-500/30 shadow-md">
+                        <span class="text-2xl">🛡️</span>
+                        <h4 class="font-bold text-white text-base mt-2">클린 여신 포트폴리오 구축</h4>
+                        <p class="text-xs text-slate-300 mt-1 leading-relaxed">
+                            지역신보 90~100% 보증서 연계로 부실 리스크 없는 건전 여신 확보
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-900/90 border border-amber-500/30 shadow-md">
+                        <span class="text-2xl">💡</span>
+                        <h4 class="font-bold text-white text-base mt-2">골목상권 회생 안전판</h4>
+                        <p class="text-xs text-slate-300 mt-1 leading-relaxed">
+                            연 1.5%p 금리 인하로 연간 수십억 원대 이자 부담을 덜어내 상권 폐업 방어
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-900/90 border border-indigo-500/30 shadow-md">
+                        <span class="text-2xl">🌟</span>
+                        <h4 class="font-bold text-white text-base mt-2">ESG 상생 브랜드 위상 정립</h4>
+                        <p class="text-xs text-slate-300 mt-1 leading-relaxed">
+                            '지역과 함께 울고 웃는 따뜻한 상호금융'이라는 독보적 브랜드 가치 선점
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-500 py-12 border-t border-slate-800 text-center text-xs">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="font-bold text-slate-300 text-sm mb-1">새마을금고중앙회 금융상품개발팀</p>
+            <p>MG 상생 희망드림 대출(가칭) 신상품 전략 기획서 | 서민금융의 온기를 지역 곳곳에 전합니다.</p>
+            <p class="mt-4 text-slate-600">© 2026 KFCC Financial Product Development Team. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Chart.js Scripts -->
+    <script>
+        // Label wrapping utility (Mandatory 16-char logic)
+        function wrapLabel(str, maxChars = 16) {
+            if (typeof str !== 'string' || str.length <= maxChars) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).trim().length > maxChars) {
+                    if (currentLine) lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine += (currentLine ? ' ' : '') + word;
+                }
+            });
+            if (currentLine) lines.push(currentLine.trim());
+            return lines;
+        }
+
+        // Shared Tooltip Callback requirement
+        const sharedTooltipConfig = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        };
+
+        // Dark Theme Chart defaults
+        Chart.defaults.color = '#94a3b8';
+        Chart.defaults.borderColor = 'rgba(148, 163, 184, 0.15)';
+
+        // Initialize Charts after DOM loaded
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // CHART 1: Target Audience Breakdown (Doughnut Chart)
+            const targetCtx = document.getElementById('targetAudienceChart').getContext('2d');
+            const targetRawLabels = ['지역화폐 가맹 소상공인', '전통시장 내 등록 사업자', '일반 골목상권 자영업자'];
+            
+            new Chart(targetCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: targetRawLabels.map(l => wrapLabel(l, 16)),
+                    datasets: [{
+                        data: [45, 30, 25],
+                        backgroundColor: ['#38bdf8', '#2dd4bf', '#fbbf24'],
+                        borderWidth: 2,
+                        borderColor: '#0f172a'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { 
+                            position: 'bottom',
+                            labels: { color: '#cbd5e1' }
+                        },
+                        tooltip: sharedTooltipConfig
+                    }
+                }
+            });
+
+            // CHART 2: Interest Rate Structure (Horizontal Stacked Bar)
+            const rateCtx = document.getElementById('rateStructureChart').getContext('2d');
+            const rateRawLabels = ['우대금리 할인폭 (%p)'];
+
+            new Chart(rateCtx, {
+                type: 'bar',
+                data: {
+                    labels: rateRawLabels.map(l => wrapLabel(l, 16)),
+                    datasets: [
+                        {
+                            label: '지역화폐 계좌 지정 (+0.5%p)',
+                            data: [0.5],
+                            backgroundColor: '#38bdf8'
+                        },
+                        {
+                            label: 'MG더뱅킹 & 자동이체 (+0.5%p)',
+                            data: [0.5],
+                            backgroundColor: '#2dd4bf'
+                        },
+                        {
+                            label: '상인회 추천/협약 (+0.5%p)',
+                            data: [0.5],
+                            backgroundColor: '#fbbf24'
+                        }
+                    ]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            stacked: true,
+                            max: 2.0,
+                            ticks: { color: '#94a3b8' },
+                            title: { display: true, text: '총 우대금리 차감 폭 (%p)', color: '#94a3b8' }
+                        },
+                        y: { 
+                            stacked: true,
+                            ticks: { color: '#94a3b8' }
+                        }
+                    },
+                    plugins: {
+                        legend: { 
+                            position: 'bottom',
+                            labels: { color: '#cbd5e1' }
+                        },
+                        tooltip: sharedTooltipConfig
+                    }
+                }
+            });
+
+            // CHART 3: Risk Guarantee Coverage (Doughnut Chart)
+            const riskCtx = document.getElementById('riskGuaranteeChart').getContext('2d');
+            const riskRawLabels = ['신용보증재단 보증 담보', '금고 자체 위험 노출'];
+
+            new Chart(riskCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: riskRawLabels.map(l => wrapLabel(l, 16)),
+                    datasets: [{
+                        data: [90, 10],
+                        backgroundColor: ['#34d399', '#475569'],
+                        borderWidth: 2,
+                        borderColor: '#0f172a'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { 
+                            position: 'bottom',
+                            labels: { color: '#cbd5e1' }
+                        },
+                        tooltip: sharedTooltipConfig
+                    }
+                }
+            });
+
+            // CHART 4: 3-Year Strategic Projection (Combo Line & Bar)
+            const impactCtx = document.getElementById('impactProjectionChart').getContext('2d');
+            const impactRawLabels = ['1년차 (2026)', '2년차 (2027)', '3년차 (2028)'];
+
+            new Chart(impactCtx, {
+                type: 'bar',
+                data: {
+                    labels: impactRawLabels.map(l => wrapLabel(l, 16)),
+                    datasets: [
+                        {
+                            type: 'bar',
+                            label: '저원가성 수신 유치액 (억 원)',
+                            data: [120, 280, 450],
+                            backgroundColor: '#0284c7'
+                        },
+                        {
+                            type: 'line',
+                            label: '누적 소상공인 이자 절감액 (백만 원)',
+                            data: [180, 420, 750],
+                            borderColor: '#fbbf24',
+                            backgroundColor: '#fbbf24',
+                            borderWidth: 3,
+                            fill: false,
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { color: '#94a3b8' },
+                            title: { display: true, text: '금액 단위', color: '#94a3b8' }
+                        },
+                        x: {
+                            ticks: { color: '#94a3b8' }
+                        }
+                    },
+                    plugins: {
+                        legend: { 
+                            position: 'bottom',
+                            labels: { color: '#cbd5e1' }
+                        },
+                        tooltip: sharedTooltipConfig
+                    }
+                }
+            });
+
+            // INTERACTIVE SIMULATOR LOGIC
+            const rangeInput = document.getElementById('loanAmountRange');
+            const loanText = document.getElementById('loanAmountText');
+            const check1 = document.getElementById('checkOption1');
+            const check2 = document.getElementById('checkOption2');
+            const check3 = document.getElementById('checkOption3');
+
+            const calcDiscountRate = document.getElementById('calcDiscountRate');
+            const calcSavedInterest = document.getElementById('calcSavedInterest');
+            const calcMonthlyPayment = document.getElementById('calcMonthlyPayment');
+
+            function updateSimulator() {
+                const amount = parseInt(rangeInput.value, 10);
+                loanText.textContent = `${amount.toLocaleString()}만 원`;
+
+                let discount = 0;
+                if (check1.checked) discount += 0.5;
+                if (check2.checked) discount += 0.5;
+                if (check3.checked) discount += 0.5;
+
+                calcDiscountRate.textContent = `${discount.toFixed(1)} %p`;
+
+                // Annual saved interest = amount * discount%
+                const savedAnnualWon = (amount * 10000) * (discount / 100);
+                const savedAnnualTenThousand = Math.round(savedAnnualWon / 10000);
+                calcSavedInterest.textContent = `${savedAnnualTenThousand}만 원`;
+
+                // Estimated monthly payment (assuming base rate 4.5% - discount over 5 years equal principal)
+                const effectiveRate = Math.max(2.0, 4.5 - discount) / 100;
+                const monthlyPrincipal = (amount * 10000) / 60;
+                const approxFirstMonthInterest = (amount * 10000) * (effectiveRate / 12);
+                const approxMonthlyTotal = Math.round((monthlyPrincipal + approxFirstMonthInterest) / 10000 * 10) / 10;
+
+                calcMonthlyPayment.textContent = `월 약 ${approxMonthlyTotal}만 원 (5년 균등상환 기준)`;
+            }
+
+            rangeInput.addEventListener('input', updateSimulator);
+            check1.addEventListener('change', updateSimulator);
+            check2.addEventListener('change', updateSimulator);
+            check3.addEventListener('change', updateSimulator);
+
+            // Initial calculation call
+            updateSimulator();
+        });
+    </script>
+</body>
+</html>
