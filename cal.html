@@ -82,29 +82,45 @@
 
   <!-- MG Header Bar -->
   <header class="bg-gradient-to-r from-mg-navy via-mg-primary to-mg-secondary text-white shadow-lg sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      
+      <!-- Logo & Title Area -->
       <div class="flex items-center space-x-3">
-        <!-- MG Logo Symbol SVG -->
-        <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-md">
-          <svg viewBox="0 0 100 100" class="w-8 h-8 fill-mg-primary">
-            <path d="M50 10 L85 30 L85 70 L50 90 L15 70 L15 30 Z" fill="#005BAC" opacity="0.15"/>
-            <path d="M50 15 L80 32 L80 68 L50 85 L20 68 L20 32 Z" fill="#005BAC"/>
-            <text x="50" y="58" font-size="28" font-weight="900" fill="#FFFFFF" text-anchor="middle" font-family="sans-serif">MG</text>
-          </svg>
-        </div>
-        <div>
-          <div class="flex items-center space-x-2">
-            <h1 class="text-xl font-bold tracking-tight">MG 새마을금고</h1>
-            <span class="bg-mg-accent/20 border border-mg-accent/40 text-mg-accent text-xs px-2 py-0.5 rounded-full font-semibold">디지털금융</span>
+        <a href="https://kfcc022-maker.github.io/MG0831/" class="flex items-center space-x-3 group" title="메인화면으로 이동">
+          <!-- MG Logo Symbol SVG -->
+          <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
+            <svg viewBox="0 0 100 100" class="w-8 h-8 fill-mg-primary">
+              <path d="M50 10 L85 30 L85 70 L50 90 L15 70 L15 30 Z" fill="#005BAC" opacity="0.15"/>
+              <path d="M50 15 L80 32 L80 68 L50 85 L20 68 L20 32 Z" fill="#005BAC"/>
+              <text x="50" y="58" font-size="28" font-weight="900" fill="#FFFFFF" text-anchor="middle" font-family="sans-serif">MG</text>
+            </svg>
           </div>
-          <p class="text-xs text-blue-100 font-normal">고객 맞춤형 스마트 대출 상환 시뮬레이션</p>
-        </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <h1 class="text-xl font-bold tracking-tight">MG 새마을금고</h1>
+              <span class="bg-mg-accent/20 border border-mg-accent/40 text-mg-accent text-xs px-2 py-0.5 rounded-full font-semibold">디지털금융</span>
+            </div>
+            <p class="text-xs text-blue-100 font-normal">고객 맞춤형 스마트 대출 상환 시뮬레이션</p>
+          </div>
+        </a>
       </div>
 
-      <div class="hidden sm:flex items-center space-x-4 text-xs font-medium text-blue-100">
-        <span class="flex items-center"><i class="fa-solid fa-headset mr-1.5 text-mg-accent"></i> 창구 상담 지원 모드</span>
-        <span class="h-3 w-px bg-white/30"></span>
-        <span class="flex items-center"><i class="fa-regular fa-clock mr-1.5 text-mg-accent"></i> 실시간 금리 연동형</span>
+      <!-- Navigation & Action Buttons -->
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        
+        <!-- [메인화면] 이동 버튼 -->
+        <a 
+          href="https://kfcc022-maker.github.io/MG0831/" 
+          class="flex items-center space-x-1.5 bg-white/15 hover:bg-white text-white hover:text-mg-navy border border-white/30 hover:border-white text-xs sm:text-sm font-semibold px-3 sm:px-3.5 py-1.5 rounded-lg shadow-sm backdrop-blur-sm transition-all duration-200 active:scale-95"
+          title="새마을금고 메인화면으로 이동"
+        >
+          <i class="fa-solid fa-house text-xs sm:text-sm text-mg-accent group-hover:text-mg-navy"></i>
+          <span>메인화면</span>
+        </a>
+
+        <div class="hidden md:flex items-center space-x-3 text-xs font-medium text-blue-100 border-l border-white/20 pl-3">
+          <span class="flex items-center"><i class="fa-solid fa-headset mr-1.5 text-mg-accent"></i> 창구 상담 모드</span>
+        </div>
       </div>
     </div>
   </header>
