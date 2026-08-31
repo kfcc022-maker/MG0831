@@ -54,6 +54,7 @@
     <nav class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
+                <!-- Brand Identity -->
                 <div class="flex items-center gap-3">
                     <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-600 to-teal-400 text-white font-black text-lg shadow-lg shadow-sky-500/40">MG</span>
                     <div>
@@ -61,12 +62,27 @@
                         <span class="text-xs text-sky-400 block -mt-1 font-semibold">금융상품개발팀 | 긴급 상생 프로젝트</span>
                     </div>
                 </div>
-                <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-300">
-                    <a href="#overview" class="hover:text-sky-400 transition-colors">기획 배경</a>
-                    <a href="#target" class="hover:text-amber-400 text-amber-300 font-bold transition-colors">타깃 고객</a>
-                    <a href="#specs" class="hover:text-sky-400 transition-colors">상품 스펙</a>
-                    <a href="#risk" class="hover:text-sky-400 transition-colors">리스크 관리</a>
-                    <a href="#impact" class="hover:text-sky-400 transition-colors">기대 효과</a>
+
+                <!-- Navigation Links & Financial Calculator Button -->
+                <div class="flex items-center gap-3 sm:gap-6">
+                    <div class="hidden lg:flex space-x-6 text-sm font-medium text-slate-300">
+                        <a href="#overview" class="hover:text-sky-400 transition-colors">기획 배경</a>
+                        <a href="#target" class="hover:text-amber-400 text-amber-300 font-bold transition-colors">타깃 고객</a>
+                        <a href="#specs" class="hover:text-sky-400 transition-colors">상품 스펙</a>
+                        <a href="#risk" class="hover:text-sky-400 transition-colors">리스크 관리</a>
+                        <a href="#impact" class="hover:text-sky-400 transition-colors">기대 효과</a>
+                    </div>
+
+                    <!-- Financial Calculator Link Button -->
+                    <a href="https://kfcc022-maker.github.io/MG0831/cal" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       title="새 창에서 금융계산기 열기"
+                       class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-sky-500 to-teal-400 text-slate-950 font-black text-xs sm:text-sm hover:from-sky-400 hover:to-teal-300 shadow-lg shadow-sky-500/30 hover:scale-105 active:scale-95 transition-all">
+                        <span class="text-sm">🧮</span>
+                        <span>금융계산기</span>
+                        <span class="text-[10px] bg-slate-950/20 px-1.5 py-0.5 rounded text-slate-900 font-bold hidden sm:inline-block">바로가기 ↗</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -80,8 +96,7 @@
             </div>
             <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white mb-6 leading-tight">
                 새벽을 여는 당신을 위해,<br class="hidden sm:inline">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-teal-300 to-amber-300">MG 상생 희망
-                    드림 대출</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-teal-300 to-amber-300">MG 상생 희망드림 대출</span>
                 <span class="text-amber-400 text-2xl sm:text-3xl font-bold ml-2">(가칭)</span>
             </h1>
             <p class="text-slate-300 text-base sm:text-xl max-w-3xl leading-relaxed font-normal">
@@ -120,7 +135,7 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
 
         <!-- SECTION 1: 기획 배경 및 추진 필요성 -->
-        <section class="glass-panel rounded-2xl shadow-xl p-6 sm:p-8 border border-slate-800">
+        <section id="overview" class="glass-panel rounded-2xl shadow-xl p-6 sm:p-8 border border-slate-800">
             <div class="max-w-3xl mb-8">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-bold uppercase tracking-wider mb-2">
                     Section 01
